@@ -8,6 +8,7 @@ import {
 import editorTemplate from './templates/editorTemplate.html'
 import SvgCanvas from '@svgedit/svgcanvas'
 import Rulers from './Rulers.js'
+import { startBiziva } from './biziva/start.js'
 
 /**
    * @fires module:svgcanvas.SvgCanvas#event:svgEditorReady
@@ -646,6 +647,7 @@ class EditorStartup {
     })
     // run callbacks stored by this.ready
     await this.runCallbacks()
+    startBiziva(this)
     // Signal readiness to same-document listeners (tests/debugging hooks)
     document.dispatchEvent(new CustomEvent('svgedit:ready', { detail: this }))
   }
